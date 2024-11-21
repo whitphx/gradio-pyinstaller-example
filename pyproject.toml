@@ -4,4 +4,11 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "gradio>=5.3.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pyinstaller>=6.11.1",
+]
