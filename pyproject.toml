@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "gradio>=5.3.0",
+    "pywebview>=5.3.2",
 ]
 
 [tool.uv]
