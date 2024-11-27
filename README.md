@@ -15,8 +15,8 @@ The executable will be in the `dist` directory.
 $ ./dist/app/app
 ```
 
-* `runtime_hooks/gradio_hook.py` is a necessary runtime hook for `gradio` to work in the packaged executable. See its contents for more information.
-
+* `./runtime_hook.py` is a necessary runtime hook for `gradio` to work in the packaged executable. See its contents for more information.
+* `./hooks` Containing [PyInstaller hooks](https://pyinstaller.org/en/stable/hooks.html) for Gradio.
 
 ## Development with `uv`
 
