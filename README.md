@@ -8,7 +8,7 @@ $ pyinstaller app.py \
     --collect-data gradio \
     --collect-data gradio_client \
     --additional-hooks-dir=./hooks \
-    --runtime-hook ./runtime_hooks/gradio_hook.py
+    --runtime-hook ./runtime_hook.py
 ```
 The executable will be in the `dist` directory.
 ```shell
@@ -27,6 +27,6 @@ $ uv run pyinstaller app.py \
     --collect-data gradio \
     --collect-data gradio_client \
     --additional-hooks-dir=./hooks \
-    --runtime-hook ./runtime_hooks/gradio_hook.py
+    --runtime-hook ./runtime_hook.py
 $ ./dist/app/app
 ```
