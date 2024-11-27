@@ -3,30 +3,30 @@
 ## How to package a Gradio app with PyInstaller and PyWebView
 
 1. Assume that you have a Gradio app `demo` in a file named `gradio_app.py`. Make sure that `demo.launch()` is called in the `if __name__ == "__main__"` block so that it's not called when the app is imported when packaged as below.
-```python
-import gradio as gr
+    ```python
+    import gradio as gr
 
 
-def greet(name):
-    return "Hello " + name + "!!"
+    def greet(name):
+        return "Hello " + name + "!!"
 
 
-demo = gr.Interface(fn=greet, inputs="text", outputs="text")
+    demo = gr.Interface(fn=greet, inputs="text", outputs="text")
 
-if __name__ == "__main__":
-    demo.launch()
-```
+    if __name__ == "__main__":
+        demo.launch()
+    ```
 2. Create `app.py` with the following content. This is an entry point for the packaged executable. **Change the import path and the imported object (`from gradio_app import demo`) to your Gradio app.**
-```python
-import webview
+    ```python
+    import webview
 
-from gradio_app import demo as gradio_app  # CHANGE THIS LINE
+    from gradio_app import demo as gradio_app  # CHANGE THIS LINE
 
-gradio_app.launch(prevent_thread_lock=True)
+    gradio_app.launch(prevent_thread_lock=True)
 
-webview.create_window("Gradio App", demo.local_url)  # Change the title if needed
-webview.start()
-```
+    webview.create_window("Gradio App", demo.local_url)  # Change the title if needed
+    webview.start()
+    ```
 3. Add the following files:
     * `runtime_hook.py`
         ```python
@@ -49,7 +49,10 @@ webview.start()
             'gradio': 'py',  # Collect gradio package as source .py files
         }
         ```
-4. Install dependencies: `pyinstaller` and `pywebview`.
+4. Install dependencies: `pyinstaller` and `pywebview` for packaging. `gradio` and other dependencies are also required for runtime.
+    ```shell
+    $ pip install pyinstaller pywebview gradio
+    ```
 5. Package the app with PyInstaller with the following command:
     ```shell
     $ pyinstaller app.py \
